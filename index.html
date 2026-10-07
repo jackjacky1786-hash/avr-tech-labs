@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AVR Tech Labs | Scalable Software Architecture & Digital Engineering</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark-theme">
+
+  <!-- Ambient Glows & Cyber Background -->
+  <div class="ambient-glow orb-1"></div>
+  <div class="ambient-glow orb-2"></div>
+  <div class="cyber-grid-overlay"></div>
+
+  <!-- Ultra Sleek Top Floating Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="AVR Tech Labs Home">
+        <img src="avr-logo.png" alt="AVR Tech Labs Logo" class="nav-logo" />
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="services.html" class="nav-link">Capabilities</a></li>
+          <li><a href="#advisor" class="nav-link">Advisor</a></li>
+          <li><a href="#why-us" class="nav-link">Advantage</a></li>
+          <li><a href="#roi" class="nav-link">ROI</a></li>
+          <li><a href="#portfolio" class="nav-link">Work</a></li>
+          <li><a href="#estimator" class="nav-link">Estimator</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <!-- Theme Toggle -->
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Switch Theme">
+            <i class="fa-solid fa-moon moon-icon"></i>
+            <i class="fa-solid fa-sun sun-icon"></i>
+          </button>
+
+          <a href="#contact" class="btn btn-primary nav-cta">
+            <span>Start Project</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </nav>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-content">
+      
+      <!-- Live Server Health Widget -->
+      <div class="system-status-badge">
+        <span class="live-pulse"></span>
+        <span class="status-txt">Global Infrastructure Operational &bull; 99.98% Latency ~24ms</span>
+      </div>
+
+      <!-- Monumental Brand Typography -->
+      <div class="brand-hero-display">
+        <h1 class="grand-brand-name">
+          <span class="brand-acr">AVR</span>
+          <span class="brand-slogan">TECH LABS</span>
+        </h1>
+        <div class="brand-tagline-glow">
+          <span class="tech-accent-line"></span>
+          <span class="tagline-text">ARCHITECTING HIGH-PERFORMANCE DIGITAL ECOSYSTEMS</span>
+          <span class="tech-accent-line"></span>
+        </div>
+      </div>
+
+      <p class="hero-subtitle">
+        We engineer bespoke web applications, high-conversion cross-platform mobile apps, and institutional management systems built to scale seamlessly.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn btn-primary btn-glow">
+          <span>Explore Featured Work</span>
+          <i class="fa-solid fa-arrow-trend-up"></i>
+        </a>
+        <a href="#advisor" class="btn btn-secondary glass-btn">
+          <span>AI Stack Advisor</span>
+          <i class="fa-solid fa-terminal"></i>
+        </a>
+      </div>
+
+      <!-- Trust Metrics with Live Color Themes -->
+      <div class="hero-metrics-strip">
+        <div class="metric-card">
+          <div class="metric-value metric-uptime">
+            <i class="fa-solid fa-shield-halved metric-icon"></i>
+            <span>99.9%</span>
+          </div>
+          <div class="metric-label">Uptime Architecture</div>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <div class="metric-card">
+          <div class="metric-value metric-speed">
+            <i class="fa-solid fa-bolt metric-icon"></i>
+            <span>Sub-Second</span>
+          </div>
+          <div class="metric-label">Blazing Load Speeds</div>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <div class="metric-card">
+          <div class="metric-value metric-fullstack">
+            <i class="fa-solid fa-layer-group metric-icon"></i>
+            <span>Full Stack</span>
+          </div>
+          <div class="metric-label">End-to-End Delivery</div>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <div class="metric-card">
+          <div class="metric-value metric-react-native">
+            <i class="fa-brands fa-react react-icon-spin"></i>
+            <span>React Native</span>
+          </div>
+          <div class="metric-label">Cross-Platform Apps</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-Width Edge-to-Edge Continuous Tech Marquee Slider -->
+  <section class="tech-marquee-section">
+    <div class="marquee-tag">TECHNOLOGY ECOSYSTEM & STACK</div>
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <div class="tech-pill"><i class="fa-brands fa-react"></i> React.js</div>
+        <div class="tech-pill"><i class="fa-brands fa-node"></i> Node.js</div>
+        <div class="tech-pill"><i class="fa-brands fa-python"></i> Python</div>
+        <div class="tech-pill"><i class="fa-solid fa-database"></i> MongoDB</div>
+        <div class="tech-pill"><i class="fa-brands fa-js"></i> Modern JavaScript</div>
+        <div class="tech-pill"><i class="fa-solid fa-mobile-screen"></i> React Native</div>
+        <div class="tech-pill"><i class="fa-solid fa-cloud"></i> REST & Cloud APIs</div>
+        <div class="tech-pill"><i class="fa-brands fa-html5"></i> HTML5 / CSS3 Grid</div>
+        <!-- Infinite Loop -->
+        <div class="tech-pill"><i class="fa-brands fa-react"></i> React.js</div>
+        <div class="tech-pill"><i class="fa-brands fa-node"></i> Node.js</div>
+        <div class="tech-pill"><i class="fa-brands fa-python"></i> Python</div>
+        <div class="tech-pill"><i class="fa-solid fa-database"></i> MongoDB</div>
+        <div class="tech-pill"><i class="fa-brands fa-js"></i> Modern JavaScript</div>
+        <div class="tech-pill"><i class="fa-solid fa-mobile-screen"></i> React Native</div>
+        <div class="tech-pill"><i class="fa-solid fa-cloud"></i> REST & Cloud APIs</div>
+        <div class="tech-pill"><i class="fa-brands fa-html5"></i> HTML5 / CSS3 Grid</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARTUP FEATURE 1: SECURITY & COMPLIANCE BADGES STRIP -->
+  <section class="security-badges-section">
+    <div class="container security-grid">
+      <div class="sec-badge-item">
+        <i class="fa-solid fa-lock"></i>
+        <div>
+          <h4>JWT Stateless Auth</h4>
+          <p>Zero token leaks with RBAC</p>
+        </div>
+      </div>
+      <div class="sec-badge-item">
+        <i class="fa-solid fa-shield-virus"></i>
+        <div>
+          <h4>OWASP Hardened</h4>
+          <p>Sanitized query injections</p>
+        </div>
+      </div>
+      <div class="sec-badge-item">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <div>
+          <h4>Cloud Redundancy</h4>
+          <p>Automated backup schedules</p>
+        </div>
+      </div>
+      <div class="sec-badge-item">
+        <i class="fa-solid fa-file-contract"></i>
+        <div>
+          <h4>Full IP Ownership</h4>
+          <p>100% source code belongs to you</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARTUP FEATURE 2: WHY CHOOSE AVR TECH LABS -->
+  <section class="why-us-section" id="why-us">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">THE AVR ADVANTAGE</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">Why Modern Businesses Build With Us</h2>
+        <p class="section-desc">Traditional software agencies move slow and rely on middlemen. We engineer with modern velocity and zero friction.</p>
+      </div>
+
+      <div class="why-us-grid">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-gauge-high"></i></div>
+          <h3>Rapid 2 to 4-Week Delivery</h3>
+          <p>We eliminate corporate bureaucracy to build functional, production-ready MVPs with extreme speed.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3>Direct Architect Access</h3>
+          <p>No non-technical account managers. You collaborate directly with experienced software engineers throughout the project.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-fingerprint"></i></div>
+          <h3>100% Code & IP Ownership</h3>
+          <p>Complete source code repositories, database schemas, and intellectual property rights are handed over to your team upon launch.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-cube"></i></div>
+          <h3>Modern Silicon Valley Stacks</h3>
+          <p>No outdated legacy code. Everything is built on modern, lightweight engines: React, Node.js, React Native, and cloud databases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE ADVISOR (TERMINAL) -->
+  <section class="advisor-section" id="advisor">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">INTELLIGENT SYSTEM DESIGN</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">Architecture Blueprint Advisor</h2>
+        <p class="section-desc">Select a project type to preview the recommended engineering stack and deployment topology.</p>
+      </div>
+
+      <div class="advisor-terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="terminal-title">avr-architecture-advisor v2.6.4 — bash</div>
+          <div class="terminal-chip">Edge Optimized</div>
+        </div>
+
+        <div class="terminal-body">
+          <div class="preset-triggers">
+            <span>Select Architecture:</span>
+            <button class="terminal-btn active" onclick="loadAdvisorSpec('school')">Institutional ERP</button>
+            <button class="terminal-btn" onclick="loadAdvisorSpec('fintech')">FinTech Analytics</button>
+            <button class="terminal-btn" onclick="loadAdvisorSpec('mobileapp')">Consumer Mobile App</button>
+            <button class="terminal-btn" onclick="loadAdvisorSpec('saas')">B2B SaaS Dashboard</button>
+          </div>
+
+          <div class="terminal-output" id="terminalOutput"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARTUP FEATURE 3: LIVE DIGITIZATION ROI CALCULATOR -->
+  <section class="roi-section" id="roi">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">TANGIBLE IMPACT</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">Digitization ROI & Hours Saved</h2>
+        <p class="section-desc">Estimate the operational hours and administrative expenses saved by replacing manual registers with custom portals.</p>
+      </div>
+
+      <div class="roi-box">
+        <div class="roi-controls">
+          <div class="roi-slider-group">
+            <div class="roi-label-row">
+              <label for="staffRange">Active Staff / Admin Count:</label>
+              <span id="staffVal" class="roi-slider-val">10 Members</span>
+            </div>
+            <input type="range" id="staffRange" min="2" max="50" value="10" class="roi-slider" />
+          </div>
+
+          <div class="roi-slider-group">
+            <div class="roi-label-row">
+              <label for="hoursRange">Weekly Hours Spent on Manual Paperwork / Records:</label>
+              <span id="hoursVal" class="roi-slider-val">15 Hours/wk</span>
+            </div>
+            <input type="range" id="hoursRange" min="5" max="40" value="15" class="roi-slider" />
+          </div>
+        </div>
+
+        <div class="roi-results">
+          <div class="roi-metric">
+            <div class="roi-metric-num" id="hoursSavedMonthly">360+ Hrs</div>
+            <div class="roi-metric-desc">Administrative Hours Saved Monthly</div>
+          </div>
+          <div class="roi-metric">
+            <div class="roi-metric-num" id="costSavedMonthly">₹54,000*</div>
+            <div class="roi-metric-desc">Est. Productive Capital Reclaimed / mo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-STEP PROCESS ROADMAP -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">HOW WE DELIVER</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">The Engineering Lifecycle</h2>
+        <p class="section-desc">From initial blueprint to zero-downtime deployment in four disciplined stages.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="step-num">01</div>
+          <div class="step-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+          <h3>Discovery & Blueprint</h3>
+          <p>We dissect functional requirements, determine database models, and chart clear architecture roadmaps.</p>
+          <div class="step-milestone"><i class="fa-solid fa-check"></i> Architecture Specs Ready</div>
+        </div>
+
+        <div class="process-card">
+          <div class="step-num">02</div>
+          <div class="step-icon"><i class="fa-solid fa-palette"></i></div>
+          <h3>UI/UX Design System</h3>
+          <p>Crafting high-fidelity, dual-theme dark/light interactive wireframes with fluid user conversion pathways.</p>
+          <div class="step-milestone"><i class="fa-solid fa-check"></i> Design Tokens Approved</div>
+        </div>
+
+        <div class="process-card">
+          <div class="step-num">03</div>
+          <div class="step-icon"><i class="fa-solid fa-code-merge"></i></div>
+          <h3>Rapid Agile Sprints</h3>
+          <p>Clean, modular implementation with full-stack frameworks (React, Node.js, React Native) and secure REST APIs.</p>
+          <div class="step-milestone"><i class="fa-solid fa-check"></i> Weekly Progress Builds</div>
+        </div>
+
+        <div class="process-card">
+          <div class="step-num">04</div>
+          <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
+          <h3>Deploy & CI/CD Support</h3>
+          <p>Hardened production deployment, CDN optimizations, automated backups, and 24/7 post-launch monitoring.</p>
+          <div class="step-milestone"><i class="fa-solid fa-check"></i> Live Production Go</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">CORE CAPABILITIES</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">Built for Performance, <br />Engineered to Scale</h2>
+        <p class="section-desc">Click any capability below to view dedicated technical breakdown and architecture.</p>
+      </div>
+
+      <div class="services-grid">
+        <a href="services.html#web" style="text-decoration: none; color: inherit;">
+          <div class="service-box">
+            <div class="box-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Full-Stack Web Engineering</h3>
+            <p>Modern Single Page Applications (SPA), responsive portals, and cloud-integrated REST API microservices.</p>
+            <div class="pill-list">
+              <span>React.js</span>
+              <span>Node.js</span>
+              <span>REST APIs</span>
+            </div>
+            <div class="view-live-btn">
+              <span>View Technical Details</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
+
+        <a href="services.html#mobile" style="text-decoration: none; color: inherit;">
+          <div class="service-box">
+            <div class="box-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3>Cross-Platform Mobile Apps</h3>
+            <p>Intuitive Android and iOS applications with fluid gestures, real-time syncing, and native responsiveness.</p>
+            <div class="pill-list">
+              <span>React Native</span>
+              <span>Offline-First</span>
+              <span>Mobile UX</span>
+            </div>
+            <div class="view-live-btn">
+              <span>View Technical Details</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
+
+        <a href="services.html#erp" style="text-decoration: none; color: inherit;">
+          <div class="service-box">
+            <div class="box-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3>Custom Institutional Portals</h3>
+            <p>Custom School & Institute ERPs, student dashboards, and workflow automations eliminating paperwork.</p>
+            <div class="pill-list">
+              <span>School ERP</span>
+              <span>Fee Trackers</span>
+              <span>Secure Portals</span>
+            </div>
+            <div class="view-live-btn">
+              <span>View Technical Details</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
+
+        <a href="services.html#uiux" style="text-decoration: none; color: inherit;">
+          <div class="service-box">
+            <div class="box-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>UI/UX Re-Engineering</h3>
+            <p>Modernizing legacy corporate interfaces into sleek, dark/light mode digital products that drive engagement.</p>
+            <div class="pill-list">
+              <span>Design Systems</span>
+              <span>Micro-Interactions</span>
+              <span>Frictionless UX</span>
+            </div>
+            <div class="view-live-btn">
+              <span>View Technical Details</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOUD EDGE LATENCY MONITOR -->
+  <section class="latency-section">
+    <div class="container">
+      <div class="latency-box">
+        <div class="latency-left">
+          <div class="section-badge">INFRASTRUCTURE TELEMETRY</div>
+          <h3>Ultra-Low Latency Cloud Architecture</h3>
+          <p>Our web apps and APIs are built with modern caching and optimized payloads for sub-second page performance across India and globally.</p>
+        </div>
+        <div class="latency-grid">
+          <div class="latency-card">
+            <span class="node-name">Mumbai Cloud Edge</span>
+            <div class="node-ping"><span class="ping-dot"></span> 18 ms</div>
+            <span class="node-status">Optimal</span>
+          </div>
+          <div class="latency-card">
+            <span class="node-name">Hyderabad Region</span>
+            <div class="node-ping"><span class="ping-dot"></span> 22 ms</div>
+            <span class="node-status">Optimal</span>
+          </div>
+          <div class="latency-card">
+            <span class="node-name">Singapore Edge</span>
+            <div class="node-ping"><span class="ping-dot"></span> 38 ms</div>
+            <span class="node-status">Accelerated</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTERABLE TECH STACK MATRIX -->
+  <section class="tech-matrix-section" id="tech-matrix">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">ENTERPRISE TOOLING</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">The AVR Tech Matrix</h2>
+        <p class="section-desc">Filter our active software engineering tools by architectural domain.</p>
+      </div>
+
+      <div class="matrix-filter-bar">
+        <button class="matrix-filter-btn active" data-filter="all">All Stack</button>
+        <button class="matrix-filter-btn" data-filter="frontend">Frontend & UI</button>
+        <button class="matrix-filter-btn" data-filter="backend">Backend & Cloud</button>
+        <button class="matrix-filter-btn" data-filter="mobile">Mobile Engine</button>
+        <button class="matrix-filter-btn" data-filter="database">Databases</button>
+      </div>
+
+      <div class="matrix-grid" id="matrixGrid">
+        <div class="matrix-item" data-category="frontend">
+          <i class="fa-brands fa-react matrix-icon" style="color: #61DAFB;"></i>
+          <h4>React.js</h4>
+          <span>Component State Architecture</span>
+        </div>
+        <div class="matrix-item" data-category="backend">
+          <i class="fa-brands fa-node matrix-icon" style="color: #68A063;"></i>
+          <h4>Node.js</h4>
+          <span>High-Concurrency Runtimes</span>
+        </div>
+        <div class="matrix-item" data-category="backend">
+          <i class="fa-brands fa-python matrix-icon" style="color: #3776AB;"></i>
+          <h4>Python</h4>
+          <span>Microservices & Algorithmic Engines</span>
+        </div>
+        <div class="matrix-item" data-category="mobile">
+          <i class="fa-solid fa-mobile-screen-button matrix-icon" style="color: #00E1D9;"></i>
+          <h4>React Native</h4>
+          <span>Unified Cross-Platform Native Apps</span>
+        </div>
+        <div class="matrix-item" data-category="database">
+          <i class="fa-solid fa-database matrix-icon" style="color: #4DB33D;"></i>
+          <h4>MongoDB</h4>
+          <span>Document Schema & Cloud Storage</span>
+        </div>
+        <div class="matrix-item" data-category="backend">
+          <i class="fa-solid fa-server matrix-icon" style="color: #94A3B8;"></i>
+          <h4>Express.js</h4>
+          <span>Scalable REST API Pipelines</span>
+        </div>
+        <div class="matrix-item" data-category="frontend">
+          <i class="fa-brands fa-css3-alt matrix-icon" style="color: #38BDF8;"></i>
+          <h4>Tailwind & Modern CSS</h4>
+          <span>Responsive Dual-Theme Systems</span>
+        </div>
+        <div class="matrix-item" data-category="frontend">
+          <i class="fa-brands fa-js matrix-icon" style="color: #F7DF1E;"></i>
+          <h4>ES6+ JavaScript</h4>
+          <span>Reactive DOM & Micro-Interactions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio-section" id="portfolio">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">PORTFOLIO SPOTLIGHT</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">Featured Engineering Proofs</h2>
+        <p class="section-desc">Click any platform below to inspect its architecture details and technical stack.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="project-showcase-card" onclick="openProjectModal('fincalc')">
+          <div class="card-meta">
+            <span class="category-badge">FinTech & Utilities</span>
+            <span class="version-tag">Live Utility</span>
+          </div>
+          <h3>FinCalc Hub</h3>
+          <p>A fast financial suite providing analytical calculators, responsive dashboards, and zero-latency planning tools.</p>
+          <div class="project-stack">
+            <span>JavaScript</span>
+            <span>Modular CSS</span>
+            <span>Netlify Deployed</span>
+          </div>
+          <div class="view-live-btn">
+            <span>Inspect Architecture</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <div class="project-showcase-card" onclick="openProjectModal('erp')">
+          <div class="card-meta">
+            <span class="category-badge">Institutional ERP</span>
+            <span class="version-tag">Enterprise Portal</span>
+          </div>
+          <h3>School & Institute Management Portal</h3>
+          <p>Scalable web platform handling student records, dynamic attendance tracking, fee balances, and administrative reports.</p>
+          <div class="project-stack">
+            <span>React.js</span>
+            <span>Node.js</span>
+            <span>MERN Stack</span>
+          </div>
+          <div class="view-live-btn">
+            <span>Inspect Architecture</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <div class="project-showcase-card" onclick="openProjectModal('studentdb')">
+          <div class="card-meta">
+            <span class="category-badge">Data Management</span>
+            <span class="version-tag">Reactive Dashboard</span>
+          </div>
+          <h3>Student Data Engine</h3>
+          <p>A responsive student management portal featuring offline-first data persistence, instant search, and metric analytics.</p>
+          <div class="project-stack">
+            <span>React</span>
+            <span>LocalStorage Store</span>
+            <span>GitHub Pages</span>
+          </div>
+          <div class="view-live-btn">
+            <span>Inspect Architecture</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARTUP FEATURE 4: TECHNICAL CASE STUDIES & INSIGHTS -->
+  <section class="insights-section">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">ENGINEERING CASE STUDIES</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">Architectural Deep Dives</h2>
+        <p class="section-desc">How we solve complex engineering bottlenecks in modern software builds.</p>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight-card" onclick="openProjectModal('erp')">
+          <div class="insight-tag">ERP Scalability</div>
+          <h3>Scaling Institutional Record Engines with MongoDB Document Sharding</h3>
+          <p>Handling 50,000+ attendance records and instant search queries without database choking.</p>
+          <span class="insight-link">Read Blueprint <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+
+        <div class="insight-card" onclick="openProjectModal('fincalc')">
+          <div class="insight-tag">Client Latency</div>
+          <h3>Eliminating Computation Lag in Real-Time Numerical Dashboards</h3>
+          <p>Techniques for keeping client-side mathematical algorithms executing in under 20 milliseconds.</p>
+          <span class="insight-link">Read Blueprint <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+
+        <div class="insight-card" onclick="openProjectModal('studentdb')">
+          <div class="insight-tag">Mobile & Offline</div>
+          <h3>Optimizing 60 FPS Fluidity & Offline Sync on Low-End Hardware</h3>
+          <p>State hydration patterns that keep React Native mobile applications feeling native anywhere.</p>
+          <span class="insight-link">Read Blueprint <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT SOCIAL PROOF / TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">VERIFIED IMPACT</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">Engineered with Trust</h2>
+        <p class="section-desc">What institutional partners and business leaders say about working with AVR Tech Labs.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-quote">
+            "The institutional portal digitized our entire fee ledger and attendance registers. What took hours of physical paperwork now finishes in a few clicks."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div>
+              <h5>Institution Administrator</h5>
+              <span>Education Management Partner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-quote">
+            "Blazing fast performance. The architecture was modular and easy to deploy on our existing cloud hosting with clean documentation."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fa-solid fa-chart-line"></i></div>
+            <div>
+              <h5>FinTech Project Lead</h5>
+              <span>Financial Tools Platform</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-quote">
+            "The dual dark and light theme interface received high praises from our stakeholders. The attention to detail in UI/UX is truly world-class."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fa-solid fa-laptop-code"></i></div>
+            <div>
+              <h5>Digital Product Manager</h5>
+              <span>Enterprise Client</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Project Cost Estimator with WhatsApp/Copy Export -->
+  <section class="estimator-section" id="estimator">
+    <div class="container">
+      <div class="section-badge" style="text-align: center;">INSTANT QUOTE ESTIMATOR</div>
+      <div class="section-heading-wrapper" style="text-align: center;">
+        <h2 class="section-title">Calculate Your Project Budget</h2>
+        <p class="section-desc">Select your requirements below to generate a transparent ballpark timeline and cost estimate.</p>
+      </div>
+
+      <div class="estimator-box">
+        <div class="estimator-options">
+          <div class="calc-group">
+            <label>1. Platform Category</label>
+            <div class="calc-btn-group" id="platform-group">
+              <div class="calc-choice active" data-val="web" data-cost="20000" data-time="2-3 Weeks">Web App</div>
+              <div class="calc-choice" data-val="mobile" data-cost="35000" data-time="3-4 Weeks">Mobile App</div>
+              <div class="calc-choice" data-val="full" data-cost="50000" data-time="4-6 Weeks">Web + Mobile</div>
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label>2. Architecture Complexity</label>
+            <div class="calc-btn-group" id="complexity-group">
+              <div class="calc-choice active" data-val="standard" data-mult="1.0">Standard / MVP</div>
+              <div class="calc-choice" data-val="advanced" data-mult="1.4">Advanced + APIs</div>
+              <div class="calc-choice" data-val="enterprise" data-mult="1.8">Full Enterprise ERP</div>
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label>3. Delivery Speed</label>
+            <div class="calc-btn-group" id="speed-group">
+              <div class="calc-choice active" data-val="standard" data-speed="1.0">Standard Pace</div>
+              <div class="calc-choice" data-val="priority" data-speed="1.25">Priority Sprint</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="estimator-result-card">
+          <span class="section-badge">BALLPARK ESTIMATE</span>
+          <div class="result-amount" id="estimated-cost">₹20,000*</div>
+          <div class="result-timeline" id="estimated-timeline">Estimated Timeline: 2-3 Weeks</div>
+          
+          <div class="estimator-actions-row">
+            <a href="#contact" class="btn btn-primary" onclick="injectEstimateToContact()">
+              <span>Discuss Estimate</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <button class="btn btn-secondary glass-btn" onclick="exportEstimateSummary()" title="Copy estimate summary to clipboard">
+              <i class="fa-solid fa-copy"></i>
+              <span id="copyEstimateBtnText">Copy Estimate</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-badge" style="text-align:center;">FREQUENTLY ASKED QUESTIONS</div>
+      <div class="section-heading-wrapper" style="text-align:center;">
+        <h2 class="section-title">Everything You Need to Know</h2>
+        <p class="section-desc">Clear answers about how we collaborate, build, and support your software.</p>
+      </div>
+
+      <div class="faq-wrapper">
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>What technologies do AVR Tech Labs specialize in?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We specialize in full-stack web platforms (React.js, Node.js, Express, MongoDB), cross-platform mobile apps using React Native, and high-conversion modern web interfaces.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can you build a custom management system for schools or local businesses?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Yes! We build tailored ERP solutions, student management portals, dynamic fee systems, and automated record databases tailored exactly to institutional workflows.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Do we own the full source code and database upon project completion?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Yes, 100%. All GitHub repositories, database schemas, hosting credentials, and Intellectual Property (IP) rights belong solely to you upon project handover.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Do you offer post-launch maintenance and updates?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Every deployment includes dedicated support, security patching, uptime monitoring, and feature iteration sprints to keep your platform future-proof.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-glass-wrapper">
+        <div class="contact-left-col">
+          <div class="section-badge">START A CONVERSATION</div>
+          <h2>Ready to Launch Your Next Software Platform?</h2>
+          <p>Whether you require a custom web application, an institute ERP, or have a mobile app idea, let's connect directly.</p>
+
+          <div class="direct-reach-list">
+            <a href="mailto:contact@avrtechlabs.com" class="reach-item">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <span class="label">Official Communication</span>
+                <span class="val">contact@avrtechlabs.com</span>
+              </div>
+            </a>
+            <div class="reach-item">
+              <i class="fa-solid fa-clock"></i>
+              <div>
+                <span class="label">SLA Turnaround</span>
+                <span class="val">Response within 24 Hours</span>
+              </div>
+            </div>
+            <div class="reach-item" onclick="openScheduleModal()" style="cursor: pointer;">
+              <i class="fa-solid fa-video"></i>
+              <div>
+                <span class="label">Direct Consultation</span>
+                <span class="val">Schedule 15-Min Quick Call <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 4px;"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-right-col">
+          <form id="contact-form" class="modern-form">
+            <div class="form-row">
+              <div class="input-field">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="example:AVR" required />
+              </div>
+              <div class="input-field">
+                <label for="email">Work Email</label>
+                <input type="email" id="email" placeholder="example:avrtechlabs@gmail.com" required />
+              </div>
+            </div>
+
+            <div class="input-field">
+              <label for="service">Select Requirement</label>
+              <select id="service" required>
+                <option value="" disabled selected>Choose a category</option>
+                <option value="Full-Stack Web App">Full-Stack Web App (React / Node.js)</option>
+                <option value="Mobile App">Mobile Application (React Native)</option>
+                <option value="Institutional ERP">Institution / School ERP Portal</option>
+                <option value="UI/UX Redesign">UI/UX Modernization & Redesign</option>
+              </select>
+            </div>
+
+            <div class="input-field">
+              <label for="message">Project Scope</label>
+              <textarea id="message" rows="4" placeholder="Briefly describe what you would like to build..." required></textarea>
+            </div>
+
+            <div class="form-btn-actions">
+              <button type="submit" class="btn btn-primary">
+                <span>Send Inquiry</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+              <button type="button" class="btn btn-whatsapp" onclick="sendViaWhatsApp()">
+                <span>Chat via WhatsApp</span>
+                <i class="fa-brands fa-whatsapp"></i>
+              </button>
+            </div>
+            <div id="form-feedback" class="feedback-msg"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modern Footer with Legal & Compliance Modals -->
+  <footer class="footer">
+    <div class="container footer-layout">
+      <div class="footer-left">
+        <img src="avr-logo.png" alt="AVR Tech Labs Logo" class="footer-logo" />
+        <p>Architecting next-generation digital platforms for modern enterprises and institutions.</p>
+      </div>
+
+      <div class="footer-right">
+        <ul class="footer-nav">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="services.html">Capabilities</a></li>
+          <li><a href="#advisor">Advisor</a></li>
+          <li><a href="#why-us">Advantage</a></li>
+          <li><a href="#roi">ROI</a></li>
+          <li><a href="#portfolio">Work</a></li>
+          <li><a href="#estimator">Estimator</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-legal-row">
+          <a href="javascript:void(0)" onclick="openLegalModal('privacy')">Privacy Policy</a>
+          <span>&bull;</span>
+          <a href="javascript:void(0)" onclick="openLegalModal('terms')">Terms of Service</a>
+          <span>&bull;</span>
+          <a href="javascript:void(0)" onclick="openLegalModal('sla')">SLA & Uptime Policy</a>
+        </div>
+        <p class="copyright">&copy; 2026 AVR Tech Labs. Designed & Engineered with Precision.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Utilities (Bottom Right) -->
+  <div class="floating-bar">
+    <button class="float-btn scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top" onclick="scrollToTop()">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <a href="https://wa.me/9030025364?text=Hello%20AVR%20Tech%20Labs,%20I%20have%20a%20project%20inquiry." target="_blank" rel="noopener noreferrer" class="float-btn float-whatsapp" aria-label="WhatsApp Support">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Project Architecture Modal Container -->
+  <div class="modal-overlay" id="projectModal" onclick="closeModalOnOverlay(event, 'projectModal')">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
+      <span class="section-badge" id="modal-category">SYSTEM ARCHITECTURE</span>
+      <h2 id="modal-title" style="margin: 10px 0;">Project Title</h2>
+      <p id="modal-desc" style="color: var(--text-secondary); margin-bottom: 20px;">Project description...</p>
+      <ul class="modal-specs-list" id="modal-specs"></ul>
+      <a href="#contact" class="btn btn-primary" onclick="closeProjectModal()" style="width: 100%;">
+        <span>Inquire About Similar Solution</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- QUICK CONSULTATION CALL MODAL -->
+  <div class="modal-overlay" id="scheduleModal" onclick="closeModalOnOverlay(event, 'scheduleModal')">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeScheduleModal()">&times;</button>
+      <span class="section-badge">QUICK ARCHITECTURE REVIEW</span>
+      <h2 style="margin: 10px 0;">Schedule 15-Min Engineering Call</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 20px;">Direct session to assess tech feasibility, timeline estimations, and architecture blueprints for your software.</p>
+      
+      <div style="background: var(--pill-bg); padding: 18px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <i class="fa-solid fa-check-circle" style="color: #10B981;"></i>
+          <span style="font-size: 0.9rem;">Zero obligation architecture roadmap</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <i class="fa-solid fa-check-circle" style="color: #10B981;"></i>
+          <span style="font-size: 0.9rem;">Budget & tech stack feasibility breakdown</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-check-circle" style="color: #10B981;"></i>
+          <span style="font-size: 0.9rem;">Direct consultation via Google Meet</span>
+        </div>
+      </div>
+
+      <a href="https://wa.me/9030025364?text=Hello%20AVR%20Tech%20Labs,%20I%20would%20like%20to%20schedule%20a%2015-minute%20architecture%20call." target="_blank" class="btn btn-primary" style="width: 100%;">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>Confirm Call on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- STARTUP FEATURE 5: LEGAL & COMPLIANCE MODAL -->
+  <div class="modal-overlay" id="legalModal" onclick="closeModalOnOverlay(event, 'legalModal')">
+    <div class="modal-card" style="max-width: 680px;">
+      <button class="modal-close-btn" onclick="closeLegalModal()">&times;</button>
+      <span class="section-badge" id="legalModalBadge">LEGAL COMPLIANCE</span>
+      <h2 id="legalModalTitle" style="margin: 10px 0;">Policy Details</h2>
+      <div id="legalModalContent" style="color: var(--text-secondary); line-height: 1.7; font-size: 0.94rem; margin: 20px 0; max-height: 320px; overflow-y: auto; padding-right: 10px;">
+        <!-- Dynamically injected -->
+      </div>
+      <button class="btn btn-secondary glass-btn" onclick="closeLegalModal()" style="width: 100%;">Close Document</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

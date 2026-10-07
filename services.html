@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capability Details | AVR Tech Labs</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Navbar Solid Glass Fix - prevents text bleed-through when scrolling */
+    .navbar {
+      background: rgba(4, 8, 18, 0.94) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      z-index: 9999 !important;
+    }
+
+    body.light-theme .navbar {
+      background: rgba(255, 255, 255, 0.96) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Page Header Clean Spacing */
+    .services-page-header {
+      padding: 150px 0 20px 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Interactive Capability Switcher Tabs */
+    .capability-tabs-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 35px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cap-tab-btn {
+      padding: 12px 22px;
+      border-radius: 12px;
+      background: var(--pill-bg);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .cap-tab-btn i {
+      color: var(--primary-cyan);
+    }
+
+    .cap-tab-btn:hover {
+      border-color: var(--primary-cyan);
+      color: var(--text-pure);
+    }
+
+    .cap-tab-btn.active {
+      background: rgba(0, 225, 217, 0.14);
+      border-color: var(--primary-cyan);
+      color: var(--primary-cyan);
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+
+    /* Single Active Service View Container */
+    .service-detail-section {
+      padding: 10px 0 90px 0;
+      position: relative;
+      z-index: 2;
+      display: none;
+      animation: fadeInCap 0.35s ease;
+    }
+
+    .service-detail-section.active {
+      display: block;
+    }
+
+    @keyframes fadeInCap {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .service-detail-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .service-spec-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      border-radius: 20px;
+      padding: 34px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      position: sticky;
+      top: 110px;
+    }
+
+    .feature-checklist {
+      list-style: none;
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feature-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .feature-checklist li i {
+      color: var(--primary-cyan);
+      font-size: 1.1rem;
+      margin-top: 3px;
+    }
+
+    .service-tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .service-tag-cloud span {
+      background: var(--pill-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      color: var(--primary-cyan);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .back-home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary-cyan);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 18px;
+      transition: gap 0.2s ease;
+    }
+
+    .back-home-link:hover { gap: 12px; }
+
+    @media (max-width: 992px) {
+      .service-detail-grid { grid-template-columns: 1fr; }
+      .service-spec-box { position: static; }
+      .services-page-header { padding: 130px 0 20px 0; }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+
+  <div class="ambient-glow orb-1"></div>
+  <div class="ambient-glow orb-2"></div>
+  <div class="cyber-grid-overlay"></div>
+
+  <!-- Navbar with Guaranteed Solid Backdrop -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AVR Tech Labs Home">
+        <img src="avr-logo.png" alt="AVR Tech Labs Logo" class="nav-logo" />
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html#hero" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link active">Capabilities</a></li>
+          <li><a href="index.html#portfolio" class="nav-link">Work</a></li>
+          <li><a href="index.html#estimator" class="nav-link">Estimator</a></li>
+          <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon moon-icon"></i>
+            <i class="fa-solid fa-sun sun-icon"></i>
+          </button>
+          <a href="index.html#contact" class="btn btn-primary nav-cta">
+            <span>Start Project</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </nav>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Header Banner (Clean Single-Title Hierarchy) -->
+  <section class="services-page-header">
+    <div class="container">
+      <a href="index.html#services" class="back-home-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to All Capabilities</span>
+      </a>
+      <div class="section-badge">TECHNICAL SPECIFICATIONS</div>
+      <h1 class="section-title" id="page-service-title" style="font-size: clamp(2.3rem, 5vw, 3.6rem);">
+        Full-Stack Web Engineering
+      </h1>
+      <p class="section-desc" style="max-width: 720px; margin: 0 auto;">
+        Deep dive into our implementation standards, architectural design, and deployment pipelines.
+      </p>
+
+      <!-- Quick Switcher Tabs -->
+      <div class="capability-tabs-nav">
+        <button class="cap-tab-btn" onclick="showCapability('web')">
+          <i class="fa-solid fa-code"></i> Web Engineering
+        </button>
+        <button class="cap-tab-btn" onclick="showCapability('mobile')">
+          <i class="fa-solid fa-mobile-screen-button"></i> Mobile Apps
+        </button>
+        <button class="cap-tab-btn" onclick="showCapability('erp')">
+          <i class="fa-solid fa-network-wired"></i> Institutional ERP
+        </button>
+        <button class="cap-tab-btn" onclick="showCapability('uiux')">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> UI/UX Redesign
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Web Engineering Detail -->
+  <section class="service-detail-section" id="service-web">
+    <div class="container service-detail-grid">
+      <div>
+        <p style="color: var(--text-secondary); margin-bottom: 22px; font-size: 1.05rem;">
+          We build robust, cloud-native web systems that handle high traffic effortlessly. From reactive frontend client applications to scalable microservice backends, we prioritize clean modularity, security, and sub-second query performance.
+        </p>
+
+        <ul class="feature-checklist">
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Single Page Applications (SPA):</strong>
+              <p>Engineered with React.js for zero page-reloads, reactive DOM updates, and fluid user interactions.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">High-Throughput Node.js Backends:</strong>
+              <p>RESTful APIs and microservice architectures built on Node.js and Express for high concurrent connection capacity.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Scalable MongoDB & SQL Storage:</strong>
+              <p>Clean schemas, indexed queries, query optimization, and automated real-time cloud data backups.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Security & Authentication:</strong>
+              <p>Stateless JWT authentication, Role-Based Access Controls (RBAC), and data sanitation guarding against injection threats.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="service-tag-cloud">
+          <span>React.js</span>
+          <span>Node.js</span>
+          <span>Express.js</span>
+          <span>MongoDB</span>
+          <span>REST APIs</span>
+          <span>Tailwind CSS</span>
+        </div>
+      </div>
+
+      <div class="service-spec-box">
+        <div class="box-icon"><i class="fa-solid fa-code"></i></div>
+        <h3 style="font-size: 1.35rem; margin-bottom: 10px;">Best Suited For</h3>
+        <p style="color: var(--text-secondary); font-size: 0.94rem; margin-bottom: 20px;">
+          SaaS dashboards, corporate web platforms, financial tools, real-time analytics portals, and dynamic client portals.
+        </p>
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; margin-bottom: 20px;">
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Standard Sprint Duration</div>
+          <div style="font-size: 1.2rem; font-weight: 700; color: var(--primary-cyan);">2 to 3 Weeks</div>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary" style="width: 100%;">
+          <span>Consult for Web Project</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Mobile Apps Detail -->
+  <section class="service-detail-section" id="service-mobile">
+    <div class="container service-detail-grid">
+      <div>
+        <p style="color: var(--text-secondary); margin-bottom: 22px; font-size: 1.05rem;">
+          Maintain a single clean codebase that builds into production-ready Android and iOS applications with 60 FPS fluidity, native device integration, and offline synchronization.
+        </p>
+
+        <ul class="feature-checklist">
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">React Native & Expo Ecosystem:</strong>
+              <p>Rapid deployment cycles with access to native camera, secure device storage, geolocation, and push notification modules.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Offline-First Architecture:</strong>
+              <p>Local state caching and queued background requests ensure user workflow is uninterrupted during low network coverage.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Fluid Responsive Gestures:</strong>
+              <p>Custom gesture handling, buttery smooth bottom-sheet modals, and platform-specific haptic interactions.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="service-tag-cloud">
+          <span>React Native</span>
+          <span>Expo CLI</span>
+          <span>Android & iOS</span>
+          <span>Offline Sync</span>
+          <span>REST Integration</span>
+        </div>
+      </div>
+
+      <div class="service-spec-box">
+        <div class="box-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h3 style="font-size: 1.35rem; margin-bottom: 10px;">Best Suited For</h3>
+        <p style="color: var(--text-secondary); font-size: 0.94rem; margin-bottom: 20px;">
+          Customer mobile portals, on-the-go utility tools, field-staff data collection, and direct-to-consumer digital services.
+        </p>
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; margin-bottom: 20px;">
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Standard Sprint Duration</div>
+          <div style="font-size: 1.2rem; font-weight: 700; color: var(--primary-cyan);">3 to 4 Weeks</div>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary" style="width: 100%;">
+          <span>Consult for Mobile App</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Institutional ERP Detail -->
+  <section class="service-detail-section" id="service-erp">
+    <div class="container service-detail-grid">
+      <div>
+        <p style="color: var(--text-secondary); margin-bottom: 22px; font-size: 1.05rem;">
+          Eliminate paperwork, physical registers, and human calculation errors. We engineer end-to-end management portals tailored to schools, institutes, and local businesses.
+        </p>
+
+        <ul class="feature-checklist">
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Comprehensive Student & Staff Records:</strong>
+              <p>Complete academic portfolios, contact records, ID card generation, and document archives in a unified search panel.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Dynamic Attendance & Analytics:</strong>
+              <p>One-click attendance recording with automated monthly percentage calculation and low-attendance deficiency indicators.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Fee Ledgers & Automated Billing:</strong>
+              <p>Fee installment tracking, balance reconciliation, dues alerts, and printable digital fee receipt generation.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Automated Document / PDF Export:</strong>
+              <p>Single-click export of report cards, fee summaries, and student rosters formatted with official school logos and stamps.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="service-tag-cloud">
+          <span>School ERP</span>
+          <span>Fee Ledger</span>
+          <span>Attendance Portal</span>
+          <span>PDF Reports</span>
+          <span>Role Permissions</span>
+        </div>
+      </div>
+
+      <div class="service-spec-box">
+        <div class="box-icon"><i class="fa-solid fa-network-wired"></i></div>
+        <h3 style="font-size: 1.35rem; margin-bottom: 10px;">Best Suited For</h3>
+        <p style="color: var(--text-secondary); font-size: 0.94rem; margin-bottom: 20px;">
+          Schools, coaching institutes, junior colleges, academy centers, and inventory management facilities.
+        </p>
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; margin-bottom: 20px;">
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Standard Sprint Duration</div>
+          <div style="font-size: 1.2rem; font-weight: 700; color: var(--primary-cyan);">3 to 5 Weeks</div>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary" style="width: 100%;">
+          <span>Digitize Your Institution</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. UI/UX Re-Engineering Detail -->
+  <section class="service-detail-section" id="service-uiux">
+    <div class="container service-detail-grid">
+      <div>
+        <p style="color: var(--text-secondary); margin-bottom: 22px; font-size: 1.05rem;">
+          Clunky interfaces decrease client trust and conversion rates. We revamp websites into Silicon-Valley-caliber digital products with dark/light themes, typography harmony, and minimal user friction.
+        </p>
+
+        <ul class="feature-checklist">
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Dual Dark/Light Theming Architecture:</strong>
+              <p>High-contrast, eye-friendly design systems engineered with CSS variables for seamless real-time switching.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Modern Glassmorphism & Micro-Interactions:</strong>
+              <p>Subtle frosted-glass panels, glow borders, and hover responses that create an unforgettable brand feel.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong style="color: var(--text-pure);">Conversion Funnel Optimization:</strong>
+              <p>Streamlined contact sections, click-to-WhatsApp integrations, and optimized layouts that convert visitors into leads.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="service-tag-cloud">
+          <span>Glassmorphism</span>
+          <span>Design Systems</span>
+          <span>Dual Theme</span>
+          <span>Micro-Interactions</span>
+          <span>Responsive UI</span>
+        </div>
+      </div>
+
+      <div class="service-spec-box">
+        <div class="box-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3 style="font-size: 1.35rem; margin-bottom: 10px;">Best Suited For</h3>
+        <p style="color: var(--text-secondary); font-size: 0.94rem; margin-bottom: 20px;">
+          Business rebranding, modernization of slow legacy portals, and new startup product landing pages.
+        </p>
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; margin-bottom: 20px;">
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Standard Sprint Duration</div>
+          <div style="font-size: 1.2rem; font-weight: 700; color: var(--primary-cyan);">1 to 2 Weeks</div>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary" style="width: 100%;">
+          <span>Modernize Your UI/UX</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-layout">
+      <div class="footer-left">
+        <img src="avr-logo.png" alt="AVR Tech Labs Logo" class="footer-logo" />
+        <p>Architecting next-generation digital platforms for modern enterprises and institutions.</p>
+      </div>
+
+      <div class="footer-right">
+        <ul class="footer-nav">
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="services.html">Capabilities</a></li>
+          <li><a href="index.html#portfolio">Work</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <p class="copyright">&copy; 2026 AVR Tech Labs. Designed & Engineered with Precision.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script to Handle Tabs & Dynamic Title -->
+  <script>
+    // 1. Theme Persistence
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('avr_theme') || 'dark';
+    if (savedTheme === 'light') {
+      document.body.classList.replace('dark-theme', 'light-theme');
+    }
+    themeToggle.addEventListener('click', () => {
+      if (document.body.classList.contains('light-theme')) {
+        document.body.classList.replace('light-theme', 'dark-theme');
+        localStorage.setItem('avr_theme', 'dark');
+      } else {
+        document.body.classList.replace('dark-theme', 'light-theme');
+        localStorage.setItem('avr_theme', 'light');
+      }
+    });
+
+    // 2. Tab switching & clean title updates
+    const titles = {
+      web: "Full-Stack Web Engineering",
+      mobile: "Cross-Platform Mobile Apps",
+      erp: "Custom Institutional ERP & Portals",
+      uiux: "Modern UI/UX Re-Engineering"
+    };
+
+    function showCapability(key) {
+      if (!titles[key]) key = 'web';
+
+      // Hide all detail sections
+      document.querySelectorAll('.service-detail-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+
+      // Show ONLY selected section
+      const activeSec = document.getElementById(`service-${key}`);
+      if (activeSec) {
+        activeSec.classList.add('active');
+      }
+
+      // Update button active state
+      document.querySelectorAll('.cap-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick').includes(`'${key}'`)) {
+          btn.classList.add('active');
+        }
+      });
+
+      // Update Header Title cleanly
+      document.getElementById('page-service-title').textContent = titles[key];
+
+      // Update URL hash cleanly
+      history.replaceState(null, null, `#${key}`);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      let targetKey = window.location.hash.replace('#', '').toLowerCase();
+      if (!targetKey || !titles[targetKey]) {
+        targetKey = 'web';
+      }
+      showCapability(targetKey);
+    });
+
+    window.addEventListener('hashchange', () => {
+      let targetKey = window.location.hash.replace('#', '').toLowerCase();
+      showCapability(targetKey);
+    });
+  </script>
+</body>
+</html>
